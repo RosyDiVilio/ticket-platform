@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/fragments :: head}">
+  
+</head>
+<body>
+	<header th:insert="~{fragments/navbar :: navbar(tickets)}"></header>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<th:block th:if="${note.size > 0}">
+	
+					<h1 class="mb-5 mt-4 text-center">Lista delle note</h1>
+	
+					<div class="container d-flex justify-content-center">
+						<div class="row mx-2" th:each="note : ${ticket.notes}">
+							<div class="col">
+	
+								<div  class="card border-secondary mb-3" style="max-width: 50rem;">
+									<div class="card-body text-secondary">
+										<h6 class="card-text"><strong>Id nota: </strong> <span class="fw-light">[[ ${note.id}]] </span></h6>
+										<h6 class="card-text"><strong>Id ticket: </strong><span class="fw-light">[[ ${ticket.id}]] </span></h6>										
+										<h6 class="card-text"><strong>Autore nota:</strong> <span class="fw-light">[[${note.user.username}]]</span></h6>
+										<h6 class="card-text"><strong>Creata il: </strong> <span class="fw-light">[[${note.getFormattedNoteCreatedAt()}]] </span></h6>										
+										<h6 class="card-text"><strong>Nota: </strong><span class="fw-light">[[${note.text}]] </span> </h6>																		
+									</div>
+								</div>
+	
+							</div>
+						</div>
+					</div>
+					<a th:href="@{/tickets/{id}(id=${ticket.id})}" class="btn btn-primary mb-4" style="float: right;">Indietro</a>
+				</th:block>
+				
+				<th:block th:unless="${note.size > 0}">
+					<h3 class="my-5 text-center">Non ci sono note</h3>
+					<a th:href="@{/tickets/{id}(id=${ticket.id})}" class="btn btn-primary mb-4" style="float: right;">Indietro</a>
+				</th:block>
+	
+	<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+</body>
+</html>

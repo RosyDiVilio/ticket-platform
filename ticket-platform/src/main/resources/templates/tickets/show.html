@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/fragments :: head}">
+  
+</head>
+<body>
+	<header th:insert="~{fragments/navbar :: navbar(tickets)}"></header>
+	
+	<div class="container d-flex justify-content-center">
+		<div class="row">
+			<div class="col">
+					
+				<h1 class="my-4 text-center">Dettagli "[[ ${ticket.title} ]]"</h1>
+					
+			    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+				  <div class="card-header"> ID Ticket N. : [[ ${ticket.id} ]]</div>
+				  <div class="card-body text-secondary">
+					 <h5 class="card-title text-uppercase">Stato Ticket: [[ ${ticket.status} ]]</h5>
+					 <p class="card-text"><strong>Descrizione:</strong> [[ ${ticket.description} ]]</p>
+					 <hr>
+					 <p class="card-text"><strong>Categoria:</strong> <span th:each="category : ${ticket.categories}">[[ ${category.name} ]]</span></p>
+					 <p class="card-text"><strong>Tipo di problema:</strong> <span th:each="category : ${ticket.categories}">[[ ${category.description} ]]</span></p>
+					 <p class="card-text"><strong>Operatore assegnato:</strong> <span th:each="user : ${ticket.user}" >[[ ${user.username} ]]</span></p>
+					 <hr>
+					 <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/tickets}" class="btn btn-primary mb-4">Indietro</a>
+					 <a sec:authorize="hasAuthority('USER')" th:href="@{/operators}" class="btn btn-primary mb-4">Indietro</a>
+					 <a th:href="@{/notes/createNote/{ticketId}(ticketId=${ticket.id})}" class="btn btn-primary mb-4">Crea nota</a>
+					 <a th:href="@{/notes/showNote/{ticketId}(ticketId=${ticket.id})}" class="btn btn-primary mb-4">Note</a>
+					 <div class="card-footer bg-transparent border-secondary">Creato il: [[ ${ticket.getFormattedCreatedAt()} ]]</div>
+			      </div>
+			    </div>
+				
+			</div>
+        </div>
+    </div>
+	
+	<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+</body>
+</html>
