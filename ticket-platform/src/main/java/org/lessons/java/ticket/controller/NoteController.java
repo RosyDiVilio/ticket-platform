@@ -68,8 +68,6 @@ public class NoteController {
 		    
 		    model.addAttribute("note", note);
 		    model.addAttribute("ticket", ticket);
-//		    model.addAttribute("userId", ticket.getUser().getId());
-//		    model.addAttribute("user", user.getId());
 		    return "notes/createNote";
 		}
 		

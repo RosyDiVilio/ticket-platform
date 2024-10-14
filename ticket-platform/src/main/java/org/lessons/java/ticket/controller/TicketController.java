@@ -103,11 +103,11 @@ public class TicketController {
 	//EDIT una GET che restituisce un form con i dati della risorsa richiesta
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable("id") Integer id, Model model) {
-	//List<User> users = userService.findByStatusTrueAndRoleUser("USER");
+
 		//prendo il libro e lo do al modello
 		model.addAttribute("ticket", service.getById(id));
 		model.addAttribute("categories", categoryService.findAll());
-		//model.addAttribute("user", users);
+		
 		model.addAttribute("user", service.getById(id).getUser());
 		
 		//restiruisco la view con il model inserito

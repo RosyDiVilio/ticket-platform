@@ -20,30 +20,7 @@
 						    <h2 class="my-4 text-center">Nota</h2>
 						    <input type="hidden" th:field="*{ticket.id}"/>
 							<input type="hidden" th:field="*{user.id}"/>
-	<!--					    <div class="mb-4">
-						        <label for="user" class="form-label fw-semibold">ID Autore</label>
-						        <input type="text" class="form-control" id="user" th:field="*{user.id}"
-								 readonly="readonly" th:value="*{user.id}">
-						    </div>
-							
-							<div class="mb-4">
-								<label for="user" class="form-label fw-semibold">Nome Autore</label>
-								<input type="text" class="form-control" id="user" th:field="*{user.username}"
-									readonly="readonly" th:value="*{user.username}">
-							</div>
-							
-							<div class="mb-4">
-								<label for="ticket" class="form-label fw-semibold">ID Ticket</label>
-								<input type="text" class="form-control" id="ticket" th:field="${ticket.id}"
-									readonly="readonly" th:value="${ticket.id}">
-							</div>
-
-							<div class="mb-4">
-								<label for="ticket" class="form-label fw-semibold">Titolo Ticket</label>
-								<input type="text" class="form-control" id="ticket" th:field="${ticket.title}"
-									readonly="readonly" th:value="${ticket.title}">
-							</div>
-	-->					    
+				    
 						    <div class="mb-4">
 						        <label for="text" class="form-label fw-semibold">Scrivi nota</label>
 						        <input type="text" class="form-control" id="text" th:field="*{text}" th:errorClass="is-invalid">
